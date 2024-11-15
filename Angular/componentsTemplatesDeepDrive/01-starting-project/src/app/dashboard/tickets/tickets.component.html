@@ -1,0 +1,14 @@
+<div>
+  <ul>
+    @for (ticket of tickets; track ticket.id) {
+    <li>
+      <app-ticket [data]="ticket" (closeTicket)="onCloseTicket(ticket.id)"/> - {{$first}}
+    </li>
+    }@empty {
+    <p>No Ticket is available</p>
+    }
+  </ul>
+</div>
+<div id="new-ticket">
+  <app-new-ticket (add)="OnAdd($event)"></app-new-ticket>
+</div>

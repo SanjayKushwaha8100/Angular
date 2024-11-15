@@ -1,0 +1,17 @@
+<main>
+  <app-learning-resources  appLog/>
+  <hr />
+  <app-auth />
+  
+  <!-- <p *ngIf="isAdmin()">you are admin!</p> -->
+  <!-- appAuth is custom structural directive instead of *ngIf  -->
+  <!-- <ng-template appAuth="admin">
+    <p> Only Admin can see this!</p>
+  </ng-template>  -->
+  <!-- if we use * we dont have to use ng-temlate, angular will create the NG template element -->
+   <!-- use above or shorter way which is below -->
+  <p *appAuth="'admin'" class="protected-content admin"> Only admin can see this!</p>
+  <p *appAuth="'user'" class="protected-content unauthenticated"> Regular users can see this!</p>
+  <p *appAuth="'guest'" class="protected-content authenticated"> Guest users can see this!</p>
+  
+</main>

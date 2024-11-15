@@ -1,0 +1,41 @@
+<app-header />
+<main>
+  <ul id="users">
+    <!-- using for in latest angular -->
+    @for (item of users; track item.id) {
+        <li>
+            <app-user [selected]="item.id==selectedUserId"
+              [user]="item"
+              (select)="onSelectUser($event)"
+            />
+          </li>
+    }
+
+    <!-- using ngFor and import NgFor in app.ts  -->
+     <!-- <li *ngFor="let user of users">
+        <app-user [user]="user" (select)="onSelectUser($event)"/>
+     </li> -->
+
+  </ul>
+  <!-- <app-tasks [name]="selectedUser.name"></app-tasks> -->
+  <!-- the above line if you have dought that selectedUser is undefined then use terniory operator
+     like this 
+     selectedUser ?  selectedUser.name : ' '
+     -->
+
+    <!-- if selectedUser is define then only use below code -->
+  @if (selectedUser) { 
+    <app-tasks [Userid]="selectedUser.id" [name]="selectedUser.name"></app-tasks>
+  }
+  @else {
+    <p id="fallback"> Select a user to see their tasks</p>
+  }
+
+  <!-- above if and else is avail in angular 17 for angular 12 u have to import NgFor , NgIf from @angular/common 
+   and implement in below menor -->
+  <!-- <app-tasks *ngIf="selectedUser; else fallback" [name]="selectedUser!.name"/>
+  <ng-template #fallback>
+    <p id="fallback">Select a user to see their tasks!</p>
+  </ng-template> -->
+
+</main>

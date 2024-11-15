@@ -1,0 +1,35 @@
+<main>
+  <article class="temperatures">
+    <header>
+      <img src="temp-icon.png" alt="Thermometer icon" />
+      <div>
+        <h2>Current Temperatures</h2>
+        <p>{{ currentDate }}</p>
+      </div>
+    </header>
+    <p>New York: {{ (currentTemperaturs.newYork | number:'1.0-2') || '0' | customTemp:'cel':'fah'}}</p>
+    <p>Berlin: {{ currentTemperaturs.berlin | customTemp:'cel'}}</p>
+    <p>Paris: {{ currentTemperaturs.paris | customTemp:'fah'}}</p>
+    <p>Chicago: {{ currentTemperaturs.chicago| customTemp:'fah':'cel' }}</p>
+    <!-- {minIntegerDigits}.{minFractionDigits}-{maxFractionDigits} -->
+    <!-- {{3.6 | number: '1.0-0'}} -->
+        <!--will output '4'-->
+    <!-- {{-3.6 | number:'1.0-0'}} -->
+        <!--will output '-4'-->
+  </article>
+
+  <article class="temperatures">
+    <header>
+      <img src="temp-icon.png" alt="Thermometer icon" />
+      <div>
+        <h2>Historic Temperatures</h2>
+        <p>Berlin</p>
+      </div>
+    </header>
+    <ul>
+      @for (temperature of historicTemperatures ; track temperature) {
+      <li (click)="onReset($index)">{{ (temperature | customTemp:'cel' )  }}</li>
+      }
+    </ul>
+  </article>
+</main>

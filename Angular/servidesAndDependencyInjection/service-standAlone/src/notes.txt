@@ -1,0 +1,13 @@
+In Angular, dependency injection can be managed at different levels, including root level, element level, and through tokens. Here’s a breakdown of each:
+
+1. Root Level Injection
+Description: When you provide a service at the root level, it is available throughout the entire application. 
+This means that a single instance of the service is created and shared across all components.
+
+2. Element Level Injection (Component Level Injection)
+Description: When you provide a service at the component level, a new instance of the service is created for that specific 
+component and its child components. This means that sibling components will not share the same instance.
+
+3. Token-based Injection
+Description: Sometimes you may want to provide a service or a value that doesn't have a concrete class. In such cases, '
+you can use injection tokens.
